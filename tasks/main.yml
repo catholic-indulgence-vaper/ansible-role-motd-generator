@@ -1,0 +1,43 @@
+---
+- debug:
+    msg:
+    - "{{ motd_generator_message }}"
+
+- set_fact:
+    _tmp_line_1: ''
+    _tmp_line_2: ''
+    _tmp_line_3: ''
+    _tmp_line_4: ''
+    _tmp_line_5: ''
+    _tmp_line_6: ''
+    _tmp_message: "{{ motd_generator_message | lower | regex_findall('(.)') }}"
+
+- set_fact:
+    _tmp_line_1: "{{ _tmp_line_1 + motd_generator_dictionary[item | string][0] }}"
+    _tmp_line_2: "{{ _tmp_line_2 + motd_generator_dictionary[item | string][1] }}"
+    _tmp_line_3: "{{ _tmp_line_3 + motd_generator_dictionary[item | string][2] }}"
+    _tmp_line_4: "{{ _tmp_line_4 + motd_generator_dictionary[item | string][3] }}"
+    _tmp_line_5: "{{ _tmp_line_5 + motd_generator_dictionary[item | string][4] }}"
+    _tmp_line_6: "{{ _tmp_line_6 + motd_generator_dictionary[item | string][5] }}"
+  with_items:
+  - "{{ _tmp_message | default([]) }}"
+
+- set_fact:
+    _tmp_content: "{{  \"\n\".join((_tmp_line_1 | trim, _tmp_line_2 | trim, _tmp_line_3 | trim, _tmp_line_4 | trim, _tmp_line_5 | trim, _tmp_line_6 | trim)) }}"
+
+- debug:
+    msg:
+    - "{{ _tmp_line_1 }}"
+    - "{{ _tmp_line_2 }}"
+    - "{{ _tmp_line_3 }}"
+    - "{{ _tmp_line_4 }}"
+    - "{{ _tmp_line_5 }}"
+    - "{{ _tmp_line_6 }}"
+
+- name: Deploy motd
+  copy:
+    content: "{{ _tmp_content }}\n"
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
