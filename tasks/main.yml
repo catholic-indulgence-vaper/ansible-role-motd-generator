@@ -23,7 +23,7 @@
   - "{{ _tmp_message | default([]) }}"
 
 - set_fact:
-    _tmp_content: "{{  \"\n\".join((_tmp_line_1 | trim, _tmp_line_2 | trim, _tmp_line_3 | trim, _tmp_line_4 | trim, _tmp_line_5 | trim, _tmp_line_6 | trim)) }}"
+    _tmp_content: "{{  \"\n\".join((_tmp_line_1 | regex_replace('[ ]+$', ''), _tmp_line_2 | regex_replace('[ ]+$', ''), _tmp_line_3 | regex_replace('[ ]+$', ''), _tmp_line_4 | regex_replace('[ ]+$', ''), _tmp_line_5 | regex_replace('[ ]+$', ''), _tmp_line_6 | regex_replace('[ ]+$', ''))) }}"
 
 - debug:
     msg:
