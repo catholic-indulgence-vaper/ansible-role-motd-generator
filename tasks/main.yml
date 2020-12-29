@@ -1,8 +1,4 @@
 ---
-- debug:
-    msg:
-    - "{{ motd_generator_message }}"
-
 - set_fact:
     _tmp_line_1: ''
     _tmp_line_2: ''
@@ -27,6 +23,7 @@
 
 - debug:
     msg:
+    - "{{ motd_generator_message }}"
     - "{{ _tmp_line_1 }}"
     - "{{ _tmp_line_2 }}"
     - "{{ _tmp_line_3 }}"
