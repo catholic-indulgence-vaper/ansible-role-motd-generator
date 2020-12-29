@@ -36,3 +36,13 @@ Enjoy the results:
 ███████║██║  ██║██║  ██║██████╔╝██████╔╝██║  ██║   ██║
 ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝
 ```
+
+# Supported chars
+Dictionary `motd_generator_dictionary` keeps all known chars:
+* a-z;
+* 0-9;
+* Whitespace;
+* Other chars:
+```
+- / , . ! ? < >
+```
