@@ -1,7 +1,7 @@
 # ansible-role-motd-generator
 Ansible role to generate pretty MOTD message in ANSI font.
 
-# Usage
+# Use
 Add to your Ansible Galaxy requirements file:
 ```
 - src: git@github.com:catholic-indulgence-vaper/ansible-role-motd-generator.git
