@@ -44,5 +44,5 @@ Dictionary `motd_generator_dictionary` keeps all known chars:
 * Whitespace;
 * Other chars:
 ```
-! # $ % & ( ) * , - . / < > ? @ ^
+! # $ % & ( ) * , - . / : ; < > ? @ [ ] ^ _
 ```
