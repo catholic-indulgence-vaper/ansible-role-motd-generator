@@ -16,20 +16,20 @@
     _tmp_line_5: "{{ _tmp_line_5 + motd_generator_dictionary[item | string][4] }}"
     _tmp_line_6: "{{ _tmp_line_6 + motd_generator_dictionary[item | string][5] }}"
   with_items:
-  - "{{ _tmp_message | default([]) }}"
+    - "{{ _tmp_message | default([]) }}"
 
 - set_fact:
     _tmp_content: "{{  \"\n\".join((_tmp_line_1 | regex_replace('[ ]+$', ''), _tmp_line_2 | regex_replace('[ ]+$', ''), _tmp_line_3 | regex_replace('[ ]+$', ''), _tmp_line_4 | regex_replace('[ ]+$', ''), _tmp_line_5 | regex_replace('[ ]+$', ''), _tmp_line_6 | regex_replace('[ ]+$', ''))) }}"
 
 - debug:
     msg:
-    - "{{ motd_generator_message }}"
-    - "{{ _tmp_line_1 }}"
-    - "{{ _tmp_line_2 }}"
-    - "{{ _tmp_line_3 }}"
-    - "{{ _tmp_line_4 }}"
-    - "{{ _tmp_line_5 }}"
-    - "{{ _tmp_line_6 }}"
+      - "{{ motd_generator_message }}"
+      - "{{ _tmp_line_1 }}"
+      - "{{ _tmp_line_2 }}"
+      - "{{ _tmp_line_3 }}"
+      - "{{ _tmp_line_4 }}"
+      - "{{ _tmp_line_5 }}"
+      - "{{ _tmp_line_6 }}"
 
 - name: Deploy motd
   copy:
